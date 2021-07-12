@@ -1,13 +1,31 @@
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-struct User {
-    name: String,
-    lastname: String,
-    firstname: String,
+pub struct User {
+    pub name: String,
     email: String,
     phone: String,
-    addr: String,
+    addr_id: String,
 }
 
-struct Order {}
+struct Address {
+    text: String,
+}
+
+struct Item {
+    title: String,
+    price: f64,
+    is_available: bool,
+}
+
+enum PaymentType {
+    CashOnDelivery,
+    PrePaid,
+}
+
+struct Order {
+    item_id: String,
+    total_price: i64,
+    owner: String,
+    payment_type: PaymentType,
+}
