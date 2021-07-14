@@ -1,10 +1,20 @@
 use serde::Deserialize;
 
+fn default_fk() -> String {
+    "NA".to_string()
+}
+
+fn default_phone() -> String {
+    "NA".to_string()
+}
+
 #[derive(Deserialize)]
 pub struct User {
     pub name: String,
     email: String,
+    #[serde(default = "default_phone")]
     phone: String,
+    #[serde(default = "default_fk")]
     addr_id: String,
 }
 

@@ -1,27 +1,38 @@
 mod errors;
 mod models;
 
-use models::{User};
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use models::User;
+
+// TODO: Make it seprate trait/module.
+mod auth {
+    use serde::Deserialize;
+    #[derive(Deserialize)]
+    pub struct Login {
+        pub name: String,
+        password: String,
+    }
+}
 
 #[get("/")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello")
 }
 
-#[get("/create")]
-async fn createuser(user: web::Json<User>) -> impl Responder {
+#[post("/create")]
+async fn create_user(user: web::Json<User>) -> impl Responder {
+    // Make a create user call.
     format!("data: {:?}\n", user.name)
 }
 
 #[post("/login")]
-async fn login() -> String {
-    "data\n".to_string()
+async fn login(login: web::Json<auth::Login>) -> impl Responder {
+    format!("pass: {:?} \n", login.name)
 }
 
 // This can be inside an module/crate or lib.
 fn config(cfg: &mut web::ServiceConfig) {
-    let authscope = web::scope("/user").service(createuser);
+    let authscope = web::scope("/user").service(create_user);
     cfg.service(authscope);
 }
 
