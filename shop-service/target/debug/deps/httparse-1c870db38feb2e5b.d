@@ -1,0 +1,12 @@
+/home/tyagig/obunch/shop-service/target/debug/deps/httparse-1c870db38feb2e5b.rmeta: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/iter.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/macros.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/mod.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/sse42.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/avx2.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/libhttparse-1c870db38feb2e5b.rlib: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/iter.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/macros.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/mod.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/sse42.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/avx2.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/httparse-1c870db38feb2e5b.d: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/iter.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/macros.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/mod.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/sse42.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/avx2.rs
+
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/lib.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/iter.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/macros.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/mod.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/sse42.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/httparse-1.4.1/src/simd/avx2.rs:

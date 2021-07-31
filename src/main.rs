@@ -1,17 +1,17 @@
-use actix_web::{get, delete, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{ web, App, HttpServer};
+use shop_service::ShopServiceHandler;
+//use menu_service::MenuServiceHandler;
+//use order_service::OrderServiceHandler;
 
-// This can be inside an module/crate or lib.
 fn config(cfg: &mut web::ServiceConfig) {
-    //let auth_scope = web::scope("/user").service(create_user);
-    //let order_scope = web::scope("/user").service(create_user);
-    //let menu_scope = web::scope("/user").service(create_user);
-    //let shop_scope = web::scope("/user").service(create_user);
-    //cfg.service(auth_scope);
+    ShopServiceHandler::config(cfg);
+    //OrderServiceHandler::config(cfg);
+    //MenuServiceHandler::config(cfg);
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let app = || App::new(); //.configure(config);
+    let app = || App::new().configure(config);
     HttpServer::new(app).bind("127.0.0.1:8080")?.run().await
 }
 

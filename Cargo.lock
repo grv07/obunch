@@ -883,6 +883,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b16bd47d9e329435e309c58469fe0791c2d0d1ba96ec0954152a5ae2b04387dc"
 
 [[package]]
+name = "menu-service"
+version = "0.1.0"
+
+[[package]]
 name = "mime"
 version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -966,8 +970,10 @@ name = "obunch"
 version = "0.1.0"
 dependencies = [
  "actix-web",
- "order-model",
+ "menu-service",
+ "order-service",
  "serde",
+ "shop-service",
  "uuid",
 ]
 
@@ -978,12 +984,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
 
 [[package]]
-name = "order-model"
+name = "order-service"
 version = "0.1.0"
-dependencies = [
- "serde",
- "uuid",
-]
 
 [[package]]
 name = "parking_lot"
@@ -1290,6 +1292,14 @@ name = "sha1"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2579985fda508104f7587689507983eadd6a6e84dd35d6d115361f530916fa0d"
+
+[[package]]
+name = "shop-service"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "serde",
+]
 
 [[package]]
 name = "signal-hook-registry"
