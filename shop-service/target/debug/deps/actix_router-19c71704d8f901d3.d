@@ -1,0 +1,12 @@
+/home/tyagig/obunch/shop-service/target/debug/deps/actix_router-19c71704d8f901d3.rmeta: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/de.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/path.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/resource.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/router.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/url.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/libactix_router-19c71704d8f901d3.rlib: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/de.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/path.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/resource.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/router.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/url.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/actix_router-19c71704d8f901d3.d: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/de.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/path.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/resource.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/router.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/url.rs
+
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/lib.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/de.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/path.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/resource.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/router.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-router-0.2.7/src/url.rs:
