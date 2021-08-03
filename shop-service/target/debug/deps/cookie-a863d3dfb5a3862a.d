@@ -1,0 +1,13 @@
+/home/tyagig/obunch/shop-service/target/debug/deps/cookie-a863d3dfb5a3862a.rmeta: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/builder.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/parse.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/jar.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/delta.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/draft.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/expiration.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/libcookie-a863d3dfb5a3862a.rlib: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/builder.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/parse.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/jar.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/delta.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/draft.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/expiration.rs
+
+/home/tyagig/obunch/shop-service/target/debug/deps/cookie-a863d3dfb5a3862a.d: /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/lib.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/builder.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/parse.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/jar.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/delta.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/draft.rs /home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/expiration.rs
+
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/lib.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/builder.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/parse.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/jar.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/delta.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/draft.rs:
+/home/tyagig/.cargo/registry/src/github.com-1ecc6299db9ec823/cookie-0.15.1/src/expiration.rs:

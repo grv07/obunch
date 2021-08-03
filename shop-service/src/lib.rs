@@ -16,7 +16,7 @@ impl ShopServiceHandler {
     }
 }
 
-async fn get_conn_pool() -> Pool {
+fn get_conn_pool() -> Pool {
     let mut cfg = Config::new();
     cfg.dbname = Some("obunch".to_string());
     cfg.user = Some("gaurav".to_string());
@@ -29,16 +29,17 @@ async fn get_conn_pool() -> Pool {
 
 #[derive(Deserialize, Debug)]
 struct Shop {
-    id: i64,
+    pub id: i64,
     name: String,
     address: String,
 }
 
 #[get("/{id}")]
-async fn get(web::Path(id): web::Path<i64>) -> impl Responder {
-    let pool = get_conn_pool().await;
+async fn get(path: web::Path<i64>) -> impl Responder {
+    let pool = get_conn_pool();
     let mut client = pool.get().await.unwrap(); 
     let statement = client.prepare("SELECT * FROM shop WHERE id=$1").await.unwrap();
+    let (id) = path.into_inner();
     let row = client.query(&statement, &[&id]).await.unwrap();
     //let row = format!("SELECT * FROM shop WHERE id={};", id).await.unwrap();
     println!("{:?}", row);
@@ -46,10 +47,11 @@ async fn get(web::Path(id): web::Path<i64>) -> impl Responder {
 }
 
 #[post("/update/{id}")]
-async fn update(web::Path(id): web::Path<i64>, shop: web::Json<Shop>) -> impl Responder {
+async fn update(path: web::Path<i64>, shop: web::Json<Shop>) -> impl Responder {
     let pool = get_conn_pool();
     let mut client = pool.get().await.unwrap(); 
     let statement = client.prepare("SELECT * FROM shop WHERE id=$1").await.unwrap();
+    let (id) = path.into_inner();
     let row = client.query(&statement, &[&id]).await.unwrap();
     let query = format!(
         "UPDATE shop SET name=\"{}\", address=\"{}\" WHERE id={};",
