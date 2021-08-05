@@ -1,6 +1,8 @@
 use actix_web::{get, post, put, web, Responder};
 use deadpool_postgres::{Config, Manager, ManagerConfig, Pool, RecyclingMethod};
 use tokio_postgres::{NoTls, Error, Client};
+use tokio_postgres::row::{Row};
+use tokio_postgres::types::{ToSql};
 use serde::Deserialize;
 
 pub struct ShopServiceHandler {}
@@ -27,6 +29,14 @@ fn get_conn_pool() -> Pool {
     cfg.create_pool(NoTls).unwrap()
 }
 
+async fn execute_query(raw_query: &str, param: &[&(dyn ToSql + Sync)]) -> Result<Vec<Row>, Error> {
+    let pool = get_conn_pool();
+    let mut client = pool.get().await.unwrap(); 
+    let statement = client.prepare(raw_query).await.unwrap();
+    println!("{:?}", statement.params());
+    client.query(&statement, param).await
+}
+
 #[derive(Deserialize, Debug)]
 struct Shop {
     pub id: i64,
@@ -35,19 +45,15 @@ struct Shop {
 }
 
 #[get("/{id}")]
-async fn get(path: web::Path<i64>) -> impl Responder {
-    let pool = get_conn_pool();
-    let mut client = pool.get().await.unwrap(); 
-    let statement = client.prepare("SELECT * FROM shop WHERE id=$1").await.unwrap();
+async fn get(path: web::Path<i32>) -> impl Responder {
     let (id) = path.into_inner();
-    let row = client.query(&statement, &[&id]).await.unwrap();
-    //let row = format!("SELECT * FROM shop WHERE id={};", id).await.unwrap();
-    println!("{:?}", row);
+    let row = execute_query("SELECT * FROM shop WHERE id=$1", &[&id]).await.unwrap();
+    println!("{:?}", row.get(0));
     ""
 }
 
 #[post("/update/{id}")]
-async fn update(path: web::Path<i64>, shop: web::Json<Shop>) -> impl Responder {
+async fn update(path: web::Path<i16>, shop: web::Json<Shop>) -> impl Responder {
     let pool = get_conn_pool();
     let mut client = pool.get().await.unwrap(); 
     let statement = client.prepare("SELECT * FROM shop WHERE id=$1").await.unwrap();

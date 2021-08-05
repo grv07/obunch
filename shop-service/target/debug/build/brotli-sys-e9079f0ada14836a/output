@@ -20,10 +20,10 @@ exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/dec/decode.o" "-c" "brotli/dec/decode.c"
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/dec/huffman.o" "-c" "brotli/dec/huffman.c"
 exit status: 0
-exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/dec/state.o" "-c" "brotli/dec/state.c"
 exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/backward_references.o" "-c" "brotli/enc/backward_references.c"
+exit status: 0
 exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/backward_references_hq.o" "-c" "brotli/enc/backward_references_hq.c"
 exit status: 0
@@ -36,8 +36,8 @@ exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/cluster.o" "-c" "brotli/enc/cluster.c"
 exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/compress_fragment.o" "-c" "brotli/enc/compress_fragment.c"
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/compress_fragment_two_pass.o" "-c" "brotli/enc/compress_fragment_two_pass.c"
 exit status: 0
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/compress_fragment_two_pass.o" "-c" "brotli/enc/compress_fragment_two_pass.c"
 exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/dictionary_hash.o" "-c" "brotli/enc/dictionary_hash.c"
 exit status: 0
@@ -54,8 +54,8 @@ exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/metablock.o" "-c" "brotli/enc/metablock.c"
 exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/static_dict.o" "-c" "brotli/enc/static_dict.c"
-exit status: 0
 running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-I" "brotli/include" "-o" "/home/tyagig/obunch/shop-service/target/debug/build/brotli-sys-e9079f0ada14836a/out/brotli/enc/utf8_util.o" "-c" "brotli/enc/utf8_util.c"
+exit status: 0
 exit status: 0
 AR_x86_64-unknown-linux-gnu = None
 AR_x86_64_unknown_linux_gnu = None
