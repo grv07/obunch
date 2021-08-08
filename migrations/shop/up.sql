@@ -1,0 +1,8 @@
+-- Create shop table
+CREATE TABLE IF NOT EXIST shop (
+	id uuid PRIMARY KEY,
+	name text NOT NULL,
+	address text NOT NULL,
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW() AT TIME ZONE 'UTC',
+	updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW() AT TIME ZONE 'UTC'
+	);
