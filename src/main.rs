@@ -11,9 +11,8 @@ fn config(cfg: &mut web::ServiceConfig) {
     //MenuServiceHandler::config(cfg);
 }
 
-
 use deadpool_postgres::{Config, ManagerConfig, Pool, RecyclingMethod};
-use tokio_postgres::{NoTls};
+use tokio_postgres::NoTls;
 
 async fn get_conn_pool() -> Pool {
     let mut cfg = Config::new();
@@ -32,7 +31,8 @@ async fn main() -> std::io::Result<()> {
     env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
     let pool = get_conn_pool().await;
     let app = move || {
-        App::new().app_data(web::Data::new(pool.clone()))
+        App::new()
+            .app_data(web::Data::new(pool.clone()))
             .wrap(Logger::default())
             .wrap(Logger::new("%a %{User-Agent}i"))
             .configure(config)
