@@ -41,7 +41,8 @@ fn get_all_files(ops: &mut Ops) -> Result<Vec<PathBuf>, String> {
         .collect::<Vec<&str>>();
     for data in WalkDir::new(BASE_PATH)
         .into_iter()
-        .filter_entry(|e| !exclude_files.contains(&e.file_name().to_str().unwrap()))
+        //TODO: must skip file with substring only
+        .filter_entry(|e| !exclude_files.contains(&(e.path().to_str().unwrap())))
     {
         if let Ok(entry) = data {
             if entry.path().is_file() {
