@@ -1,35 +1,49 @@
+use clap::{App, Arg, ArgMatches, Values};
 use postgres::{Client, NoTls};
 use std::ffi::OsStr;
 use std::path::PathBuf;
 use std::result::Result;
-use walkdir::{WalkDir, DirEntry};
-
-use clap::{App, ArgMatches, Arg, Values};
+use walkdir::{DirEntry, WalkDir};
 
 const BASE_PATH: &str = "/home/tyagig/obunch/migrations/";
 
 // (skip file list, force to drop and create)
 #[derive(Debug)]
-struct Ops<'a>(Values<'a>, bool);
+struct Ops<'a>(Option<Values<'a>>, bool);
 
 fn parse_args<'a>() -> ArgMatches<'a> {
     let args = &[
-        Arg::with_name("skip").short("s").takes_value(true).value_name("FILE").multiple(true),
-        Arg::with_name("force").short("f")
+        Arg::with_name("skip")
+            .short("s")
+            .takes_value(true)
+            .value_name("FILE")
+            .multiple(true),
+        Arg::with_name("force").short("f"),
     ];
     App::new("Migration program")
         .author("Gaurav Tyagi")
         .version("0.0.1")
         .about("A verry small and simple CLI to migrate sql files on DB")
-        .args(args).get_matches()
+        .args(args)
+        .get_matches()
 }
 
 fn get_all_files(ops: &mut Ops) -> Result<Vec<PathBuf>, String> {
     let mut res = Vec::new();
-    let mut exclude_files = |de: &DirEntry| { ops.0.map(|file_name| file_name.split(",")).any(|f| f == de.file_name())}; 
-    for data in WalkDir::new(BASE_PATH).into_iter().filter_entry(|e| !exclude_files(e)) {
+    //TODO: put this in seprate function and handle the "," and SPACE seprate args.
+    let mut exclude_files = ops
+        .0
+        .take()
+        .unwrap()
+        .next()
+        .unwrap()
+        .split(",")
+        .collect::<Vec<&str>>();
+    for data in WalkDir::new(BASE_PATH)
+        .into_iter()
+        .filter_entry(|e| !exclude_files.contains(&e.file_name().to_str().unwrap()))
+    {
         if let Ok(entry) = data {
-            println!(" ===== {:?}", entry.file_name());
             if entry.path().is_file() {
                 let entry = entry.into_path();
                 res.push(entry);
@@ -54,18 +68,17 @@ fn main() {
     )
     .unwrap();
 
-    let mut ops = Ops(Values::default(), false);
+    let mut ops = Ops(Some(Values::default()), false);
     let matches = parse_args();
     if matches.is_present("skip") {
         if let Some(s) = matches.values_of("skip") {
-            ops.0 = s;
+            ops.0 = Some(s);
         }
     }
 
     if matches.is_present("force") {
         ops.1 = true;
     }
-    println!(">>>>>>> {:?}", ops);
 
     let files = get_all_files(&mut ops);
     println!("{:?}", files);
@@ -81,4 +94,3 @@ fn main() {
         Err(err) => println!("Error in getting file list: {:?}", err),
     }
 }
-
