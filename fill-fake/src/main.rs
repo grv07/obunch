@@ -1,25 +1,44 @@
-use clap::{App, Arg, ArgMatches, Values};
+use clap::{values_t, App, Arg, ArgMatches};
 use postgres::{Client, NoTls};
 use std::ffi::OsStr;
 use std::path::PathBuf;
 use std::result::Result;
-use walkdir::{DirEntry, WalkDir};
+use walkdir::WalkDir;
 
 const BASE_PATH: &str = "/home/tyagig/obunch/migrations/";
 
 // (skip file list, force to drop and create)
 #[derive(Debug)]
-struct Ops<'a>(Option<Values<'a>>, bool);
+struct Ops(Vec<String>, bool);
 
-fn parse_args<'a>() -> ArgMatches<'a> {
-    let args = &[
-        Arg::with_name("skip")
-            .short("s")
-            .takes_value(true)
-            .value_name("FILE")
-            .multiple(true),
-        Arg::with_name("force").short("f"),
-    ];
+impl Ops {
+    fn new() -> Ops {
+        let val: Vec<String> = Vec::default();
+        Ops(val, false)
+    }
+
+    fn get_skip_values<'a>(&'a mut self) -> Vec<&'a str> {
+        let mut files = Vec::new();
+        for data in &self.0 {
+            files.push(data.as_str().split(',').collect::<Vec<&str>>());
+        }
+        files.into_iter().flatten().collect::<Vec<&str>>()
+    }
+
+    fn new_from_matches(matches: ArgMatches) -> Ops {
+        let mut ops = Self::new();
+        let skip: Vec<String> = values_t!(matches.values_of("skip"), String).unwrap();
+        ops.0 = skip;
+        ops
+    }
+}
+
+fn get_args_matches<'a>() -> ArgMatches<'a> {
+    let args = &[Arg::with_name("skip")
+        .short("s")
+        .takes_value(true)
+        .value_name("FILE")
+        .multiple(true)];
     App::new("Migration program")
         .author("Gaurav Tyagi")
         .version("0.0.1")
@@ -30,19 +49,14 @@ fn parse_args<'a>() -> ArgMatches<'a> {
 
 fn get_all_files(ops: &mut Ops) -> Result<Vec<PathBuf>, String> {
     let mut res = Vec::new();
-    //TODO: put this in seprate function and handle the "," and SPACE seprate args.
-    let mut exclude_files = ops
-        .0
-        .take()
-        .unwrap()
-        .next()
-        .unwrap()
-        .split(",")
-        .collect::<Vec<&str>>();
+    let skip_files = ops.get_skip_values();
+
+    println!("File's pattern to skip: {:?}", skip_files);
+
     for data in WalkDir::new(BASE_PATH)
         .into_iter()
-        //TODO: must skip file with substring only
-        .filter_entry(|e| !exclude_files.contains(&(e.path().to_str().unwrap())))
+        //TODO: must skip file with pattern only
+        .filter_entry(move |e| !skip_files.contains(&(e.path().to_str().unwrap())))
     {
         if let Ok(entry) = data {
             if entry.path().is_file() {
@@ -62,32 +76,29 @@ fn execute_file(file_name: &OsStr, client: &mut Client) {
     }
 }
 
-fn main() {
-    let mut client = Client::connect(
+fn get_db_conn() -> Client {
+    let client = Client::connect(
         "host=localhost dbname=obunch user=gaurav password=test123",
         NoTls,
     )
     .unwrap();
+    client
+}
 
-    let mut ops = Ops(Some(Values::default()), false);
-    let matches = parse_args();
-    if matches.is_present("skip") {
-        if let Some(s) = matches.values_of("skip") {
-            ops.0 = Some(s);
-        }
-    }
-
-    if matches.is_present("force") {
-        ops.1 = true;
-    }
+fn main() {
+    let mut conn = get_db_conn();
+    let matches = get_args_matches();
+    let mut ops = Ops::new_from_matches(matches);
 
     let files = get_all_files(&mut ops);
     println!("{:?}", files);
+
     let mut execute_files = |files: Vec<PathBuf>| {
         for file in files {
-            execute_file(file.as_os_str(), &mut client);
+            execute_file(file.as_os_str(), &mut conn);
         }
     };
+
     match files {
         Ok(files) => {
             execute_files(files);
