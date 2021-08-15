@@ -52,10 +52,11 @@ fn get_all_files(ops: &mut Ops) -> Result<Vec<PathBuf>, String> {
     let skip_files = ops.get_skip_values();
 
     println!("File's pattern to skip: {:?}", skip_files);
-    for data in WalkDir::new(BASE_PATH)
-        .into_iter()
-        .filter_entry(move |e| !skip_files.iter().any( |sf| e.path().to_str().unwrap().contains(sf)))
-    {
+    for data in WalkDir::new(BASE_PATH).into_iter().filter_entry(move |e| {
+        !skip_files
+            .iter()
+            .any(|sf| e.path().to_str().unwrap().contains(sf))
+    }) {
         if let Ok(entry) = data {
             if entry.path().is_file() {
                 let entry = entry.into_path();
@@ -104,4 +105,3 @@ fn main() {
         Err(err) => println!("Error in getting file list: {:?}", err),
     }
 }
-

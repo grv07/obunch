@@ -476,6 +476,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "fake"
+version = "2.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0a1b9884322ee3bae3545a2a2eaa9a45007136e0dd0e62db69211f1c42005ef3"
+dependencies = [
+ "rand",
+]
+
+[[package]]
 name = "fallible-iterator"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1271,10 +1280,12 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "deadpool-postgres",
+ "fake",
  "serde",
  "tokio-pg-mapper",
  "tokio-pg-mapper-derive",
  "tokio-postgres",
+ "uuid",
 ]
 
 [[package]]
@@ -1599,6 +1610,16 @@ dependencies = [
  "idna",
  "matches",
  "percent-encoding",
+]
+
+[[package]]
+name = "uuid"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc5cf98d8186244414c848017f0e2676b3fcb46807f6668a97dfe67359a3c4b7"
+dependencies = [
+ "getrandom",
+ "serde",
 ]
 
 [[package]]

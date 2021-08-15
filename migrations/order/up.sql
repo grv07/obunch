@@ -1,5 +1,5 @@
 -- Create order table
-CREATE TABLE IF NOT EXISTS order (
+CREATE TABLE IF NOT EXISTS order_table (
 	id uuid PRIMARY KEY,
 	items uuid ARRAY,
 	name text NOT NULL,

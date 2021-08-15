@@ -4,13 +4,14 @@ use serde::{Deserialize, Serialize};
 use tokio_pg_mapper::FromTokioPostgresRow;
 use tokio_pg_mapper_derive::PostgresMapper;
 use tokio_postgres::row::Row;
-use tokio_postgres::types::ToSql;
+use tokio_postgres::types::{ToSql, Type};
 use tokio_postgres::Error;
+use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, Debug, PostgresMapper)]
 #[pg_mapper(table = "shop")]
 struct Shop {
-    pub id: i32,
+    pub id: String,
     name: String,
     address: String,
 }
@@ -62,8 +63,8 @@ async fn list(pool: web::Data<Pool>) -> Result<HttpResponse> {
 }
 
 #[get("/{id}")]
-async fn get(pool: web::Data<Pool>, path: web::Path<i32>) -> Result<HttpResponse> {
-    let id = path.into_inner();
+async fn get(pool: web::Data<Pool>, path: web::Path<Uuid>) -> Result<HttpResponse> {
+    let id = path.into_inner().to_string();
     let row = execute_query_one(pool.get_ref(), "SELECT * FROM shop WHERE id=$1", &[&id])
         .await
         .unwrap();
@@ -74,10 +75,10 @@ async fn get(pool: web::Data<Pool>, path: web::Path<i32>) -> Result<HttpResponse
 #[post("/update/{id}")]
 async fn update(
     pool: web::Data<Pool>,
-    path: web::Path<i32>,
+    path: web::Path<Uuid>,
     shop: web::Json<Shop>,
 ) -> Result<HttpResponse> {
-    let id = path.into_inner();
+    let id = path.into_inner().to_string();
     let query = format!(
         "{} {}",
         "UPDATE shop SET name=$1, address=$2 WHERE id=$3 RETURNING",
