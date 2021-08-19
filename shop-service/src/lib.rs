@@ -4,14 +4,27 @@ use serde::{Deserialize, Serialize};
 use tokio_pg_mapper::FromTokioPostgresRow;
 use tokio_pg_mapper_derive::PostgresMapper;
 use tokio_postgres::row::Row;
-use tokio_postgres::types::{ToSql, Type};
+use tokio_postgres::types::{ToSql};
 use tokio_postgres::Error;
 use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, Debug, PostgresMapper)]
 #[pg_mapper(table = "shop")]
+struct ShopReader {
+    id: String,
+    name: String,
+    address: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 struct Shop {
-    pub id: String,
+    id: Uuid,
+    name: String,
+    address: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct InsertShop {
     name: String,
     address: String,
 }
@@ -57,7 +70,7 @@ async fn list(pool: web::Data<Pool>) -> Result<HttpResponse> {
         .unwrap();
     let mut shops = Vec::new();
     for row in rows {
-        shops.push(Shop::from_row(row).unwrap());
+        shops.push(ShopReader::from_row(row).unwrap());
     }
     Ok(HttpResponse::Ok().json(shops))
 }
@@ -68,7 +81,7 @@ async fn get(pool: web::Data<Pool>, path: web::Path<Uuid>) -> Result<HttpRespons
     let row = execute_query_one(pool.get_ref(), "SELECT * FROM shop WHERE id=$1", &[&id])
         .await
         .unwrap();
-    let shop = Shop::from_row(row).unwrap();
+    let shop = ShopReader::from_row(row).unwrap();
     Ok(HttpResponse::Ok().json(shop))
 }
 
@@ -82,21 +95,21 @@ async fn update(
     let query = format!(
         "{} {}",
         "UPDATE shop SET name=$1, address=$2 WHERE id=$3 RETURNING",
-        &Shop::sql_fields()
+        &ShopReader::sql_fields()
     );
     let row = execute_query_one(pool.get_ref(), &query, &[&shop.name, &shop.address, &id])
         .await
         .unwrap();
-    let shop = Shop::from_row(row).unwrap();
+    let shop = ShopReader::from_row(row).unwrap();
     Ok(HttpResponse::Ok().json(shop))
 }
 
 #[put("/insert")]
-async fn insert(pool: web::Data<Pool>, shop: web::Json<Shop>) -> Result<HttpResponse> {
+async fn insert(pool: web::Data<Pool>, shop: web::Json<InsertShop>) -> Result<HttpResponse> {
     let query = format!(
         "{} {}",
         "INSERT INTO shop (name, address) VALUES ($1, $2) RETURNING",
-        &Shop::sql_fields()
+        &ShopReader::sql_fields()
     );
     let row = execute_query_one(pool.get_ref(), &query, &[&shop.name, &shop.address])
         .await
