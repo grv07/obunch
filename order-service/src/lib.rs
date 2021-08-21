@@ -87,7 +87,7 @@ async fn update(
     path: web::Path<Uuid>,
     order: web::Json<InsertOrder>,
 ) -> Result<HttpResponse> {
-    let id = path.into_inner().to_string();
+    let id = path.into_inner();
     let query = format!(
         "{} {}",
         "UPDATE orders SET name=$1, address=$2 WHERE id=$3 RETURNING",
@@ -102,12 +102,13 @@ async fn update(
 
 #[put("/insert")]
 async fn insert(pool: web::Data<Pool>, order: web::Json<InsertOrder>) -> Result<HttpResponse> {
+    let uuid = Uuid::new_v4();
     let query = format!(
         "{} {}",
-        "INSERT INTO orders (name, address) VALUES ($1, $2) RETURNING",
+        "INSERT INTO orders (id, name, address, items) VALUES ($1, $2, $3, $4) RETURNING",
         &Order::sql_fields()
     );
-    let row = execute_query_one(pool.get_ref(), &query, &[&order.name, &order.address])
+    let row = execute_query_one(pool.get_ref(), &query, &[&uuid, &order.name, &order.address, &order.items])
         .await
         .unwrap();
     

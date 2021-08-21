@@ -1,6 +1,6 @@
 -- Create order table
 CREATE TABLE IF NOT EXISTS orders (
-	id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+	id uuid PRIMARY KEY,
 	items uuid ARRAY,
 	name text NOT NULL,
 	address text NOT NULL,
