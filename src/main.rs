@@ -3,11 +3,11 @@ use actix_web::{web, App, HttpServer};
 use env_logger::Env;
 use shop_service::ShopServiceHandler;
 //use menu_service::MenuServiceHandler;
-//use order_service::OrderServiceHandler;
+use order_service::OrderServiceHandler;
 
 fn config(cfg: &mut web::ServiceConfig) {
     ShopServiceHandler::config(cfg);
-    //OrderServiceHandler::config(cfg);
+    OrderServiceHandler::config(cfg);
     //MenuServiceHandler::config(cfg);
 }
 

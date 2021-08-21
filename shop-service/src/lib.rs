@@ -71,7 +71,7 @@ async fn list(pool: web::Data<Pool>) -> Result<HttpResponse> {
 
 #[get("/{id}")]
 async fn get(pool: web::Data<Pool>, path: web::Path<Uuid>) -> Result<HttpResponse> {
-    let id = path.into_inner().to_string();
+    let id = path.into_inner();
     let row = execute_query_one(pool.get_ref(), "SELECT * FROM shop WHERE id=$1", &[&id])
         .await
         .unwrap();
