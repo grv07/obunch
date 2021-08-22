@@ -12,6 +12,7 @@ use uuid::Uuid;
 #[pg_mapper(table = "shop")]
 struct InsertShop {
     name: String,
+    menu_list: Vec<Uuid>,
     address: String,
 }
 
@@ -20,6 +21,7 @@ struct InsertShop {
 struct Shop {
     pub id: Uuid,
     name: String,
+    menu_list: Vec<Uuid>,
     address: String,
 }
 

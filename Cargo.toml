@@ -20,3 +20,5 @@ menu-service = { path = "menu-service" }
 
 shop-service = { path = "shop-service" }
 
+item-service = { path = "item-service" }
+

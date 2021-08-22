@@ -1,7 +1,7 @@
 -- Create order table
 CREATE TABLE IF NOT EXISTS orders (
 	id uuid PRIMARY KEY,
-	items uuid ARRAY,
+	item_list uuid ARRAY,
 	name text NOT NULL,
 	address text NOT NULL,
 	prefer_time TIMESTAMPTZ DEFAULT NOW(),

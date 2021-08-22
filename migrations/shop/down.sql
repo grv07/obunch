@@ -1,2 +1,2 @@
 -- Down command for shop table.
-DROP TABLE shop;
+DROP TABLE IF EXISTS shop;

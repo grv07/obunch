@@ -1,2 +1,2 @@
--- Down command for item, menu table.
-DROP TABLE item, menu;
+-- Down command for menu table.
+DROP TABLE IF EXISTS menu;

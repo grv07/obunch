@@ -13,6 +13,7 @@ use uuid::Uuid;
 struct InsertMenu {
     name: String,
     is_avail: bool,
+    item_list: Vec<Uuid>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PostgresMapper)]
@@ -21,6 +22,7 @@ struct Menu {
     pub id: Uuid,
     name: String,
     is_avail: bool,
+    item_list: Vec<Uuid>,
 }
 
 pub struct MenuServiceHandler;

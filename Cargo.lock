@@ -499,15 +499,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "fake"
-version = "2.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0a1b9884322ee3bae3545a2a2eaa9a45007136e0dd0e62db69211f1c42005ef3"
-dependencies = [
- "rand",
-]
-
-[[package]]
 name = "fallible-iterator"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -754,6 +745,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "item-service"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "deadpool-postgres",
+ "serde",
+ "tokio-pg-mapper",
+ "tokio-pg-mapper-derive",
+ "tokio-postgres",
+ "uuid",
+]
+
+[[package]]
 name = "itoa"
 version = "0.4.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -861,6 +865,15 @@ checksum = "b16bd47d9e329435e309c58469fe0791c2d0d1ba96ec0954152a5ae2b04387dc"
 [[package]]
 name = "menu-service"
 version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "deadpool-postgres",
+ "serde",
+ "tokio-pg-mapper",
+ "tokio-pg-mapper-derive",
+ "tokio-postgres",
+ "uuid",
+]
 
 [[package]]
 name = "mime"
@@ -937,6 +950,7 @@ dependencies = [
  "actix-web",
  "deadpool-postgres",
  "env_logger",
+ "item-service",
  "menu-service",
  "order-service",
  "serde",
@@ -963,7 +977,6 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "deadpool-postgres",
- "fake",
  "serde",
  "tokio-pg-mapper",
  "tokio-pg-mapper-derive",
@@ -1307,7 +1320,6 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "deadpool-postgres",
- "fake",
  "serde",
  "tokio-pg-mapper",
  "tokio-pg-mapper-derive",

@@ -2,13 +2,15 @@ use actix_web::middleware::Logger;
 use actix_web::{web, App, HttpServer};
 use env_logger::Env;
 use shop_service::ShopServiceHandler;
-//use menu_service::MenuServiceHandler;
+use menu_service::MenuServiceHandler;
+use item_service::ItemServiceHandler;
 use order_service::OrderServiceHandler;
 
 fn config(cfg: &mut web::ServiceConfig) {
     ShopServiceHandler::config(cfg);
     OrderServiceHandler::config(cfg);
-    //MenuServiceHandler::config(cfg);
+    MenuServiceHandler::config(cfg);
+    ItemServiceHandler::config(cfg);
 }
 
 use deadpool_postgres::{Config, ManagerConfig, Pool, RecyclingMethod};

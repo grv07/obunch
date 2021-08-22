@@ -1,2 +1,2 @@
 -- Drop table item.
-DROP TABLE item;
+DROP TABLE IF EXISTS item;

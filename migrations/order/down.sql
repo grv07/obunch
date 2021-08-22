@@ -1,2 +1,2 @@
 -- Down command for order table.
-DROP TABLE order;
+DROP TABLE IF EXISTS orders;

@@ -13,7 +13,7 @@ use uuid::Uuid;
 struct InsertOrder {
     name: String,
     address: String,
-    items: Vec<Uuid>,
+    item_list: Vec<Uuid>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PostgresMapper)]
@@ -22,7 +22,7 @@ struct Order {
     pub id: Uuid,
     name: String,
     address: String,
-    items: Vec<Uuid>,
+    item_list: Vec<Uuid>,
 }
 
 pub struct OrderServiceHandler;
@@ -105,10 +105,10 @@ async fn insert(pool: web::Data<Pool>, order: web::Json<InsertOrder>) -> Result<
     let uuid = Uuid::new_v4();
     let query = format!(
         "{} {}",
-        "INSERT INTO orders (id, name, address, items) VALUES ($1, $2, $3, $4) RETURNING",
+        "INSERT INTO orders (id, name, address, item_list) VALUES ($1, $2, $3, $4) RETURNING",
         &Order::sql_fields()
     );
-    let row = execute_query_one(pool.get_ref(), &query, &[&uuid, &order.name, &order.address, &order.items])
+    let row = execute_query_one(pool.get_ref(), &query, &[&uuid, &order.name, &order.address, &order.item_list])
         .await
         .unwrap();
     
