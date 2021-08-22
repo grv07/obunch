@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS shop (
 	id uuid PRIMARY KEY, 
 	name text NOT NULL,
+	menu array UUID,
 	address text NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT NOW(),
 	updated_at TIMESTAMPTZ DEFAULT NOW()
