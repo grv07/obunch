@@ -1,10 +1,10 @@
 use actix_web::middleware::Logger;
 use actix_web::{web, App, HttpServer};
 use env_logger::Env;
-use shop_service::ShopServiceHandler;
-use menu_service::MenuServiceHandler;
 use item_service::ItemServiceHandler;
+use menu_service::MenuServiceHandler;
 use order_service::OrderServiceHandler;
+use shop_service::ShopServiceHandler;
 
 fn config(cfg: &mut web::ServiceConfig) {
     ShopServiceHandler::config(cfg);
